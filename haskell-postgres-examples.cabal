@@ -14,7 +14,7 @@ maintainer:          cred+github@begriffs.com
 category:            Database
 build-type:          Simple
 -- extra-source-files:
-cabal-version:       >=1.10
+cabal-version:       >=1.18
 
 executable two-and-two
   hs-source-dirs:      postgresql-simple/
