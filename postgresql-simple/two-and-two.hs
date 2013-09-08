@@ -10,7 +10,9 @@ printOnlies q =
     putStrLn $ show i
 
 main = do
-  conn <- connect defaultConnectInfo
+  conn <- connect defaultConnectInfo {
+    connectDatabase = "haskell"
+  }
 
   putStrLn "2 + 2"
   printOnlies =<< query_ conn "select 2 + 2"
@@ -20,4 +22,4 @@ main = do
 
   putStrLn "Enter a word"
   word <- getLine :: IO String
-  query conn "insert into words (word) values (?)" $ Only word :: IO [Only Int]
+  execute conn "insert into words (word) values (?)" $ Only word
