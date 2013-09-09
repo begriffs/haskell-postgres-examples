@@ -7,7 +7,7 @@ import Control.Applicative
 printOnlies :: [Only Int] -> IO ()
 printOnlies q =
   forM_ q $ \(Only i) ->
-    putStrLn $ show i
+    print i
 
 main = do
   conn <- connect defaultConnectInfo {
@@ -21,5 +21,5 @@ main = do
   printOnlies =<< query conn "select ? + ?" (3 :: Int, 5 :: Int)
 
   putStrLn "Enter a word"
-  word <- getLine :: IO String
+  word <- getLine
   execute conn "insert into words (word) values (?)" $ Only word
