@@ -4,21 +4,16 @@ import Database.PostgreSQL.Simple
 import Control.Monad
 import Control.Applicative
 
-printOnlies :: [Only Int] -> IO ()
-printOnlies q =
-  forM_ q $ \(Only i) ->
-    print i
-
 main = do
   conn <- connect defaultConnectInfo {
     connectDatabase = "haskell"
   }
 
   putStrLn "2 + 2"
-  printOnlies =<< query_ conn "select 2 + 2"
+  mapM_ print =<< ( query_ conn "select 2 + 2" :: IO [Only Int] )
 
   putStrLn "3 + 5"
-  printOnlies =<< query conn "select ? + ?" (3 :: Int, 5 :: Int)
+  mapM_ print =<< ( query conn "select ? + ?" (3 :: Int, 5 :: Int) :: IO [Only Int] )
 
   putStrLn "Enter a word"
   word <- getLine
