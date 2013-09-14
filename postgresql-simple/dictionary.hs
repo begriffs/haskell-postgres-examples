@@ -6,14 +6,10 @@ import Data.Maybe
 import Control.Monad
 import Control.Applicative
 
-data Dictionary = Dictionary { word :: Maybe String, definition :: Maybe String }
+data Dictionary = Dictionary { word :: Maybe String, definition :: Maybe String } deriving (Show)
 
 instance FromRow Dictionary where
   fromRow = Dictionary <$> field <*> field
-
-instance Show Dictionary where
-  show d = (showOrNull $ word d) ++ " means " ++ (showOrNull $ definition d) where
-    showOrNull = fromMaybe "null"
 
 main = do
   conn <- connect defaultConnectInfo { connectDatabase = "haskell" }
