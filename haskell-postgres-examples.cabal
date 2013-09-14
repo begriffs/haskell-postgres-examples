@@ -24,3 +24,12 @@ executable two-and-two
                      , postgresql-simple
   default-extensions:  OverloadedStrings
                      , NoMonomorphismRestriction
+
+executable dictionary
+  hs-source-dirs:      postgresql-simple/
+  main-is:             dictionary.hs
+  default-language:    Haskell2010
+  build-depends:       base >=4.6 && <4.7
+                     , postgresql-simple
+  default-extensions:  OverloadedStrings
+                     , NoMonomorphismRestriction
