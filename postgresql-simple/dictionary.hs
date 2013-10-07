@@ -8,7 +8,10 @@ import Data.Maybe
 import Control.Monad
 import Control.Applicative
 
-data Dictionary = Dictionary { word :: Maybe String, definition :: Maybe String } deriving (Show)
+data Dictionary = Dictionary {
+  word :: Maybe String,
+  definition :: Maybe String
+} deriving (Show)
 
 instance FromRow Dictionary where
   fromRow = Dictionary <$> field <*> field
