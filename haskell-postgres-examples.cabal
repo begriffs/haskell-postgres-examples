@@ -33,3 +33,19 @@ executable dictionary
                      , postgresql-simple
   default-extensions:  OverloadedStrings
                      , NoMonomorphismRestriction
+
+executable groundhog
+  hs-source-dirs:      groundhog/
+  main-is:             groundhog.hs
+  default-language:    Haskell2010
+  build-depends:       base >=4.6 && <4.7
+                     , groundhog
+                     , groundhog-postgresql
+                     , groundhog-th
+                     , transformers
+  default-extensions:  GADTs
+                     , TypeFamilies
+                     , TemplateHaskell
+                     , QuasiQuotes
+                     , FlexibleInstances
+                     , StandaloneDeriving 
